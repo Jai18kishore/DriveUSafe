@@ -1,0 +1,68 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  title Product Card/Page
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='/static/css/viewdetails.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css' integrity='sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==' crossorigin='anonymous')
+.card-wrapper
+  // card left
+  .product-imgs
+    .img-display
+      .img-showcase
+        img(src=`../uploads/${viewdriver[0].profilePhoto}` alt='image1.jpeg' style='height: 400px ; width: 100px')
+  // card right
+  .product-content
+    h2.product-title Personal Details 
+    .product-detail
+      table
+        tbody
+          tr
+            td.id Name
+            td :
+            td= viewdriver[0].name
+          tr
+            td.id Age
+            td :
+            td= viewdriver[0].age
+          tr
+            td.id Experience
+            td :
+            td= viewdriver[0].experience 
+          tr
+            td.id Capability
+            td :
+            td= viewdriver[0].capability
+          tr
+            td.id Aadhar Number
+            td :
+            td= viewdriver[0].aadharnumber
+          tr
+            td.id License Number
+            td :
+            td= viewdriver[0].licensenumber
+          tr
+            td.id Location
+            td :
+            td= viewdriver[0].locations
+          tr
+            td.id
+              .product-rating
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star-half-alt
+                  span 4.7
+          tr
+            td.id
+              .product-price
+                p.new-price
+                  | Price
+                  span : 
+                  span Rs.2100
+    td.id
+      .purchase-info
+        form(action='/book' method='post')
+          button.btn(type='submit' name='clicked' value='booked') Book Now

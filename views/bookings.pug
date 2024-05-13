@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive U Safe</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/after.css">
+
+</head>
+
+    <header>
+    <div class="contact">
+        <span><ion-icon name="call-outline"></ion-icon>123-456-7890</span>
+        <ul>
+            <li><ion-icon name="logo-facebook"></ion-icon></li>
+            <li><ion-icon name="logo-instagram"></ion-icon></li>
+            <li><ion-icon name="logo-twitter"></ion-icon></li>
+            <li><ion-icon name="logo-linkedin"></ion-icon></li>
+        </ul>
+    </div>
+    <nav>
+        <div class="toggle">
+            <a href="#"><ion-icon name="grid-outline"></ion-icon></a>
+        </div>
+        <div class="logo">
+            <a href=""><img src="/static/images/logo1.png" height="80px">Drive U Safe</a></div>
+            <div class="logores">
+            <a href=""><img src="/static/images/logo1.png" height="80px"></a>
+            </div>
+        <ul class="menu">
+            <li><ion-icon name="home-outline"></ion-icon><a href="{{url_for('landing')}}">Home</a></li>
+            <li><ion-icon name="car-sport-outline"></ion-icon><a href="{{url_for('vehicles')}}">Vehicles</a></li>
+            <li class="active"><ion-icon name="laptop-outline"></ion-icon><a href="{{url_for('bookings')}}">Bookings</a></li>
+        </ul>
+        <ul class="profile">
+            <li> <div class="dropdown">
+                <a onclick="myFunction()" class="dropbtn">Welcome {{name}}</a>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#"><ion-icon name="call-outline"></ion-icon>9962694569</a>
+                  <a href="{{url_for('index1')}}"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+                </div>
+              </div> </li>
+        </ul>
+    </nav>
+</header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<body>
+<div class="container">
+    <div class="header">
+      <section class="home-section">
+        <div class="main">
+          <br>
+          <br>
+          <br>
+          {% for i in booked %}
+          <div id="parent"> 
+            <div class="col">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="id">Driver Name</td>
+                            <td>:</td>
+                            <td>{{i[0]}}</td>
+                        </tr>
+                        <tr>
+                            <td class="id">From</td>
+                            <td>:</td>
+                            <td>{{i[1]}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="id">To</td>
+                            <td>:</td>
+                            <td>{{i[2]}}</td>
+                        </tr>
+                        <tr>
+                            <td class="id">From Date</td>
+                            <td>:</td>
+                            <td>{{i[3]}}</td>
+                        </tr>
+                        <tr>
+                            <td class="id">To Date</td>
+                            <td>:</td>
+                            <td>{{i[4]}}</td>
+                        </tr>
+                        <tr>
+                            <td class="id">Pick Up Time</td>
+                            <td>:</td>
+                            <td>{{i[5]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+            <div class="col">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="id">Food</td>
+                        <td>:</td>
+                        <td>{{i[6]}}</td>
+                    </tr>
+                    <tr>
+                        <td class="id">Shelter</td>
+                        <td>:</td>
+                        <td>{{i[7]}}</td>
+                    </tr>
+                    <tr>
+                        <td class="id">Car</td>
+                        <td>:</td>
+                        <td>{{i[8]}}</td>
+                    </tr>
+                    <tr>
+                        <td class="id">Price</td>
+                        <td>:</td>
+                        <td>{{i[9]}}</td>
+                    </tr>
+                      <td class="idstatus">Status</td>
+                      <td>:</td>
+                      <td>{{i[10]}}</td>
+
+                  </tbody>
+
+            </table>
+        </div>
+        <form action="/cancelBooking" method="post">
+            <button type="submit" name="clicked" value="{{i[0]}}{{flag}}">Cancel Booking</button>
+        </form>
+          </div>
+          <br>
+          {%endfor%}
+</div>
+</div>
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.toggle').click(function(){
+            $('.toggle').toggleClass('active')
+            $('.menu').toggleClass('active')
+        })
+    })
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+} 
+</script>
+</html>

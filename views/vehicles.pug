@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive U Safe</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/after.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfSUU8PRj-fjdpDy1T4OqOEatpDmo9b6U&libraries=places&callback=initMap">
+</script>
+
+</head>
+<body>
+    <header>
+    <div class="contact">
+        <span><ion-icon name="call-outline"></ion-icon>123-456-7890</span>
+        <ul>
+            <li><ion-icon name="logo-facebook"></ion-icon></li>
+            <li><ion-icon name="logo-instagram"></ion-icon></li>
+            <li><ion-icon name="logo-twitter"></ion-icon></li>
+            <li><ion-icon name="logo-linkedin"></ion-icon></li>
+        </ul>
+    </div>
+    <nav>
+        <div class="toggle">
+            <a href="#"><ion-icon name="grid-outline"></ion-icon></a>
+        </div>
+        <div class="logo">
+        <a href=""><img src="/static/images/logo1.png" height="80px">Drive U Safe</a></div>
+        <div class="logores">
+        <a href=""><img src="/static/images/logo1.png" height="80px"></a>
+        </div>
+        <ul class="menu">
+            <li><ion-icon name="home-outline"></ion-icon><a href="{{url_for('landing')}}">Home</a></li>
+            <li class="active"><ion-icon name="car-sport-outline"></ion-icon><a href="{{url_for('vehicles')}}">Vehicles</a></li>
+            <li><ion-icon name="laptop-outline"></ion-icon><a href="{{url_for('bookings')}}">Bookings</a></li>
+        </ul>
+        <ul class="profile">
+            <li> <div class="dropdown">
+                <a onclick="myFunction()" class="dropbtn">Welcome Jayaram Aditthya</a>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#"><ion-icon name="call-outline"></ion-icon>9962694569</a>
+                  <a href="index1.html"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+                </div>
+              </div> </li>
+        </ul>
+    </nav>
+</header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="header">
+        <h1>Add or Remove Vehicles</h1>
+    </div>
+    <form action="removeVehicle" method="post">
+    <div class="vehicles">
+        {% if data[0][0]|length>0 %}
+        {%for i in data%}
+        <div class="vehicle2">
+            
+            Chasis ID: {{i[0]}}<br>
+            Vehicle Number: {{i[1]}}<br>
+            Vehicle Type: {{i[2]}}<br>
+            Vehicle Model: {{i[3]}}
+            <br>
+        <div class="bay">
+            <button name="clicked" value="{{i[0]}}">Remove</button>
+        </div>
+
+    </div>
+    {% endfor %}
+    {% endif %}
+    </form>
+    <form action="addVehicle" method="post">
+    <div class="vehicle">
+        <ul>
+            <li>Chasis ID: <input type="number" id="chasisId" name="chasisId"></li>
+            <li>Vehicle Number: <input type="text" id="vehicleNumber" name="vehicleNumber"></li>
+            <li>Vehicle Type: <input type="text" id="vehicleType" name="vehicleType"></li>
+            <li>Vehicle Model: <input type="text" id="vehicleModel" name="vehicleModel"></li>
+            <br>
+        </ul>
+        <div class="bay">
+            <button name="clicked" value="add">Add</button>
+            <button name="clicked" value="add">Cancel</button>
+        </div>
+
+    </div>
+    </form>
+    
+</div>
+    <br>
+    <br>
+    
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.toggle').click(function(){
+            $('.toggle').toggleClass('active')
+            $('.menu').toggleClass('active')
+        })
+    })
+    
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+let autocomplete;
+function initMap() {
+  autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('autocomplete'), {types: ['geocode']});
+  autocomplete.setFields(['address_component']);
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+</script>
+
+
+</html>

@@ -1,0 +1,132 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title= title
+  link(rel='stylesheet' type='text/css' href='/static/css/landing.css')
+header
+  if message2.length > 0
+    div#boxi 
+      h3= message2
+  .contact
+    span
+      ion-icon(name='call-outline')
+      | 123-456-7890
+    ul
+      li
+        ion-icon(name='logo-facebook')
+      li
+        ion-icon(name='logo-instagram')
+      li
+        ion-icon(name='logo-twitter')
+      li
+        ion-icon(name='logo-linkedin')
+  nav
+    .toggle
+      a(href='#')
+        ion-icon(name='grid-outline')
+    .logo
+      a(href='')
+        img(src='/static/images/logo1.png' height='80px')
+        | Drive U Safe
+    .logores
+      a(href='')
+        img(src='/static/images/logo1.png' height='80px')
+    ul.menu
+      li.active
+        ion-icon(name='home-outline')
+        a(href="{{url_for('landing')}}") Home
+      li
+        ion-icon(name='car-sport-outline')
+        a(href="{{url_for('vehicles')}}") Vehicles
+      li
+        ion-icon(name='laptop-outline')
+        a(href="{{url_for('bookings')}}") Bookings
+    ul.profile
+      li
+        .dropdown
+          a.dropbtn(onclick='myFunction()') Welcome 
+            h4= message
+          #myDropdown.dropdown-content
+            a(href='#')
+              ion-icon(name='call-outline')
+              | 9962694569
+            a(href="{{url_for('index1')}}")
+              ion-icon(name='log-out-outline')
+              | Logout
+br
+br
+br
+br
+.dus
+  h1 Book Your Drivers here 
+br
+br
+form(action='/search' method='post')
+  .search
+    .search-box
+      input#location(type='text' name='location' placeholder='Location here...')
+      label From
+      input#fromdate(type='date' placeholder='dd-mm-yyyy' value='' min='1997-01-01' max='2030-12-31' name='fromdate')
+      label To
+      input#todate(type='date' placeholder='dd-mm-yyyy' value='' min='1997-01-01' max='2030-12-31' name='todate')
+      input.button(type='submit' name='clicked' value='Search')
+.country-wrap
+  .sun
+  .grass
+  .street
+    .car
+      .car-body
+        .car-top-back
+          .back-curve
+        .car-gate
+        .car-top-front
+          .wind-sheild
+        .bonet-front
+        .stepney
+      .boundary-tyre-cover
+        .boundary-tyre-cover-back-bottom
+        .boundary-tyre-cover-inner
+      .tyre-cover-front
+        .boundary-tyre-cover-inner-front
+      .base-axcel
+      .front-bumper
+      .tyre
+        .gap
+      .tyre.front
+        .gap
+      .car-shadow
+  .street-stripe
+  .hill
+script(type='module' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')
+script(nomodule='' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js')
+script.
+  $(document).ready(function(){
+  $('.toggle').click(function(){
+  $('.toggle').toggleClass('active')
+  $('.menu').toggleClass('active')
+  })
+  })
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+  }
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+  var dropdowns = document.getElementsByClassName("dropdown-content");
+  var i;
+  for (i = 0; i < dropdowns.length; i++) {
+  var openDropdown = dropdowns[i];
+  if (openDropdown.classList.contains('show')) {
+  openDropdown.classList.remove('show');
+  }
+  }
+  }
+  }
+  $(document).ready(function() {
+        setTimeout(function() {
+          $("#boxi").hide();
+        }, 2000);
+      })

@@ -1,0 +1,116 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Drive U Safe
+  link(rel='stylesheet' type='text/css' href='/static/css/style.css')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+// HTML !
+style.
+  /* CSS */
+  .button-17 {
+  align-items: center;
+  background: none;
+  border-style: none;
+  color: rgb(0, 255, 42);
+  cursor: pointer;
+  display: flex;
+  fill: currentcolor;
+  font-size: 24px;
+  font-weight: 500;
+  height: 68px;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  position: flex;
+  right: 2%;
+  top: 2%;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  }
+  .button-17:hover {
+  box-shadow: rgba(0, 0, 0, .2) 0 5px 8px -3px,rgba(0, 0, 0, .14) 0 8px 16px 1px,rgba(0, 0, 0, .12) 0 3px 28px 2px;
+  }
+section.main
+  if message.length > 0
+    div#boxii
+      h3= message
+  div
+    ion-icon.icon123(name='car-sport-outline')
+    a.button-17(href="/driverindex1") Driver Sign in
+  br
+  br
+  .content
+    h2 Drive U Safe
+    p
+      | Drive U Safe is a platform that helps you to drive safe and secure. We provide you with the best services to make your journey safe and secure.
+
+  .container
+    .right
+      form(action='/login' method='post')
+        h2 Login
+        .inputBox
+          input#email(type='text' name='email' required='')
+          span Email
+        .inputBox
+          input#otp(type='password' name='password')
+          span Password
+        .inputBox
+          input(type='submit' name='clicked' value='Login')
+        a.alre(href="/")
+          | New to Drive U Safe?
+          span  Register
+    .left
+      .box
+        .icon
+          ion-icon(name='location-outline')
+        .text
+          h3 Address
+          p
+            | R.S.M. Nagar,
+            br
+            | Kavaraipettai - 601 206, Gummudipoondi Taluk,
+            br
+            | Thiruvallur, TamilNadu, India
+      .box
+        .icon
+          ion-icon(name='call-outline')
+        .text
+          h3 Contact Us
+          p 123-456-7890
+      .box
+        .icon
+          ion-icon(name='mail-outline')
+        .text
+          h3 Email
+          p driveusafe@gmail.com
+      h2.soc Keep Updated with Us
+      ul.social
+        li
+          a(href='#')
+            ion-icon(name='logo-facebook')
+        li
+          a(href='#')
+            ion-icon(name='logo-instagram')
+        li
+          a(href='#')
+            ion-icon(name='logo-twitter')
+        li
+          a(href='#')
+            ion-icon(name='logo-linkedin')
+script(type='module' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')
+script(nomodule='' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')
+script.
+  $(document).ready(function() {
+        setTimeout(function() {
+          $("#boxii").hide();
+        }, 2000);
+      })

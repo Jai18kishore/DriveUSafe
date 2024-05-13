@@ -1,0 +1,114 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Drive U Safe
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css' integrity='sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  link(rel='stylesheet' type='text/css' href='/static/css/driverstyle.css')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+section.main
+  br
+  br
+  if message.length > 0
+    div#driverbox
+      h3= message
+  .content
+    h2 Drive U Safe
+    p
+      | Drive U Safe is a platform that helps you to drive safe and secure. We provide you with the best services to make your journey safe and secure.
+  .container
+    .right
+      form(action='/driveregister' method='post')
+        h2 Register here for Driver
+        .inputBox
+          input#name(type='text' name='name' required='')
+          span Full Name
+        .inputBox
+          input#email(type='text' name='email' required='')
+          span Email
+          button#otp(name='clicked' value='SEND_OTP') Send OTP
+      form(action='/driverotp' method='post' enctype='multipart/form-data')
+        .inputBox
+          input#otp(type='password' name='otp' required='')
+          span OTP
+        .inputBox 
+            input#password(type='password' name='password' required='')
+            span Password
+        .inputBox
+          input#phoneNumber(type='number' name='phoneNumber' required='')
+          span Phone Number
+        .inputBox
+          input#age(type='number' name='age' required='')
+          span Age
+        .inputBox
+          input#address(type='text' name='address' required='')
+          span Address
+        .inputBox
+          input#experience(type='text' name='experience' required='')
+          span Experience in Years
+        .inputBox
+          input#capability(type='text' name='capability' required='')
+          span Capability
+        .inputBox
+          input#profilePhoto(type='file' name='profilePhoto' required='')
+        .inputBox
+          input#aadharNumber(type='text' name='aadharNumber' required='' placeholder='Aadhar Number and Photo')
+          input#aadharPhoto(type='file' name='aadharPhoto' required='')
+        .inputBox
+          input#licenseNumber(type='text' name='licenseNumber' required='' placeholder='License Number and Photo')
+          input#licensePhoto(type='file' name='licensePhoto' required='')
+        .inputBox
+          input#locations(type='text' name='locations' required='')
+          span Enter Your Willing Locations
+        .inputBox
+          input(type='submit' name='clicked' value='REGISTER')
+        a.alre(href="./driverindex1")
+          | Already have an account?
+          span  Sign In
+    .left
+      .box
+        .icon
+          ion-icon(name='location-outline')
+        .text
+          h3 Address
+          p
+            | R.S.M. Nagar,
+            br
+            | Kavaraipettai - 601 206, Gummudipoondi Taluk,
+            br
+            | Thiruvallur, TamilNadu, India
+      .box
+        .icon
+          ion-icon(name='call-outline')
+        .text
+          h3 Contact Us
+          p 123-456-7890
+      .box
+        .icon
+          ion-icon(name='mail-outline')
+        .text
+          h3 Email
+          p driveusafe@gmail.com
+      h2.soc Keep Updated with Us
+      ul.social
+        li
+          a(href='#')
+            ion-icon(name='logo-facebook')
+        li
+          a(href='#')
+            ion-icon(name='logo-instagram')
+        li
+          a(href='#')
+            ion-icon(name='logo-twitter')
+        li
+          a(href='#')
+            ion-icon(name='logo-linkedin')
+script(type='module' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')
+script(nomodule='' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')
+script.
+  $(document).ready(function() {
+        setTimeout(function() {
+          $("#driverbox").hide();
+        }, 2000);
+      })

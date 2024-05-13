@@ -1,0 +1,91 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  link(rel='stylesheet' href='/static/css/driverlanding.css')
+  link(href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+  title Drive U Safe
+.sidebar
+  .logo-details
+    a(href='')
+      img(src='' height='50px')
+    .logo_name Drive U Safe
+    i#btn.bx.bx-menu
+  ul.nav-list
+    li.active
+      a(href='#')
+        i.bx.bx-user
+        span.links_name Profile
+      span.tooltip Profile
+    li
+      a(href="/driverreq")
+        i.bx.bx-chat
+        span.links_name Requests
+      span.tooltip Requests
+    li
+      a(href='#')
+        i.bx.bx-cart-alt
+        span.links_name Booking History
+      span.tooltip Booking History
+    li.profile
+      .profile-details
+        .name_job
+          .name {{data[1]}}
+          .job Driver
+        a(href='driverindex1.html')
+          i#log_out.bx.bx-log-out
+        span.tooltip Logout
+section.home-section
+  .main
+    h2 Profile
+    .card
+      .card-body
+        i.fa.fa-pen.fa-xs.edit
+        each item in data
+          table
+            tbody
+              div#photo Photo
+                img(src=`../uploads/${item.profilePhoto}`, alt='Profile Photo')
+              tr
+                td.id Name
+                td :
+                td= item.name
+              tr
+                td.id Email
+                td :
+                td= item.email 
+              tr
+                td.id Address
+                td :
+                td= item.address
+              tr
+                td.id Phone
+                td :
+                td= item.phone
+              tr
+                td.id Aadhar Number
+                td :
+                td= item.aadharnumber
+              tr
+                td.id License Number
+                td :
+                td= item.licensenumber 
+              tr
+                td.id Health Condition
+                td :
+                td Fit and Fine  
+script.
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
+  menuBtnChange();
+  });
+  function menuBtnChange() {
+  if(sidebar.classList.contains("open")){
+  closeBtn.classList.replace("bx-menu","bx-menu-alt-right");
+  }else {
+  closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
+  }
+  }

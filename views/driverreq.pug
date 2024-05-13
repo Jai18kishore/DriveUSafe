@@ -1,0 +1,113 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  link(rel='stylesheet' href='/static/css/driverlanding.css')
+  link(href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Drive U Safe
+.sidebar
+  .logo-details
+    a(href='')
+      img(src='/static/images/logo1.png' height='50px')
+    .logo_name Drive U Safe
+    i#btn.bx.bx-menu
+  ul.nav-list
+    li
+      a.active(href='driverlanding.html')
+        i.bx.bx-user
+        span.links_name Profile
+      span.tooltip Profile
+    li.active
+      a(href='#')
+        i.bx.bx-chat
+        span.links_name Requests
+      span.tooltip Requests
+    li
+      a(href='#')
+        i.bx.bx-cart-alt
+        span.links_name Booking History
+      span.tooltip Booking History
+    li.profile
+      .profile-details
+        .name_job
+          .name Jayaram Aditthya
+          .job Driver
+        a(href='driverindex1.html')
+          i#log_out.bx.bx-log-out
+        span.tooltip Logout
+section.home-section
+    .main
+      h2 Requests
+      if requests.length==0
+        h3 No requests
+      else
+        each request in requests  
+          form(action=`/requests?from=${request.fromdate}&to=${request.todate}` method='post')
+            #parent
+              .col
+                table
+                  tbody
+                    tr
+                      td.id Request By
+                      td=request.username
+                      td 
+                    tr
+                      td.id From
+                      td=request.fromloc
+                      td 
+                    tr
+                      td.id To
+                      td=request.toloc
+                      td 
+                    tr
+                      td.id From Date
+                      td=request.fromdate
+                      td 
+                    tr
+                      td.id To Date
+                      td=request.todate
+                      td 
+              .col
+                table
+                  tbody
+                    tr
+                      td.id Pickup Date
+                      td=request.fromdate
+                      td 
+                    tr
+                      td.id Food
+                      td
+                        if request.food
+                            | Provided
+                        else
+                            | Not provided
+                      td 
+                    tr
+                      td.id Shelter
+                      td
+                        if request.accomodation
+                            | Provided
+                        else
+                            | Not provided
+                      td 
+                    tr
+                      td.id Car
+                      td=request.vehiclenumber
+                      td 
+                .bay
+                  button(type='submit' name='clicked' value='accept' class="button-gap") Accept
+                  button(type='submit' name='clicked' value='reject') Reject
+script.
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
+  menuBtnChange();
+  });
+  function menuBtnChange() {
+  if(sidebar.classList.contains("open")){
+  closeBtn.classList.replace("bx-menu","bx-menu-alt-right");
+  }else {
+  closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
+  }
+  }

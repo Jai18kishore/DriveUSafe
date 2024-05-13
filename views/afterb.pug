@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive U Safe</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/after.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="bb">
+    <header>
+    <div class="contact">
+        <span><ion-icon name="call-outline"></ion-icon>123-456-7890</span>
+        <center>
+        </center>
+        <ul>
+            <li><ion-icon name="logo-facebook"></ion-icon></li>
+            <li><ion-icon name="logo-instagram"></ion-icon></li>
+            <li><ion-icon name="logo-twitter"></ion-icon></li>
+            <li><ion-icon name="logo-linkedin"></ion-icon></li>
+        </ul>
+    </div>
+    <nav>
+        <div class="toggle">
+            <a href="#"><ion-icon name="grid-outline"></ion-icon></a>
+        </div>
+        <div class="logo">
+        <a href="">Drive U Safe</a></div>
+        <ul class="menu">
+            <li><ion-icon name="home-outline"></ion-icon><a href="landing.html">Home</a></li>
+            <li><ion-icon name="car-sport-outline"></ion-icon><a href="">Vehicles</a></li>
+            <li><ion-icon name="laptop-outline"></ion-icon><a href="">Bookings</a></li>
+        </ul>
+        <ul class="profile">
+            <li> <div class="dropdown">
+                <a onclick="myFunction()" class="dropbtn">Welcome {{name}}</a>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="#"><ion-icon name="call-outline"></ion-icon>9962694569</a>
+                  <a href="{{url_for('index')}}"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+                </div>
+              </div> </li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <div class="header">
+        <h1>Drivers near {{location}}</h1>
+    </div>
+    <form action="/viewdetails" method="post">
+    <div class="drivers">
+       
+        <div class="driver">
+            <div class="image">
+                <img src="/static/images/Jayaram AditthyprofilePhoto.jpg" alt="" >
+            </div>
+            <div class="namePrice">
+                <h3>Jayaram Aditthya</h3>
+                <span>Available</span>
+            </div>
+            <p>Experience: 9 Years</p>
+            <div class="stars">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div class="bay">
+                <button id="view_details" name="clicked" value="{{item[0]}}">View Details</button>
+            </div>
+        </div>
+</form>
+</div>
+
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.toggle').click(function(){
+            $('.toggle').toggleClass('active')
+            $('.menu').toggleClass('active')
+        })
+    })
+    function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+} 
+</script>
+</html>

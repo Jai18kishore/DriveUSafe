@@ -1,0 +1,101 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Drive U Safe
+  link(rel='stylesheet' type='text/css' href='/static/css/aftersearch.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css' integrity='sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+header
+  .contact
+    span
+      ion-icon(name='call-outline')
+      | 123-456-7890
+    center
+    ul
+      li
+        ion-icon(name='logo-facebook')
+      li
+        ion-icon(name='logo-instagram')
+      li
+        ion-icon(name='logo-twitter')
+      li
+        ion-icon(name='logo-linkedin')
+  nav
+    .toggle
+      a(href='#')
+        ion-icon(name='grid-outline')
+    .logo
+      a(href='') Drive U Safe
+    ul.menu
+      li
+        ion-icon(name='home-outline')
+        a(href="{{url_for('landing')}}") Home
+      li
+        ion-icon(name='car-sport-outline')
+        a(href='') Vehicles
+      li
+        ion-icon(name='laptop-outline')
+        a(href='') Bookings
+    ul.profile
+      li
+        .dropdown
+          a.dropbtn(onclick='myFunction()') Welcome
+          #myDropdown.dropdown-content
+            a(href='#')
+              ion-icon(name='call-outline')
+              | 9962694569
+            a(href="{{url_for('index')}}")
+              ion-icon(name='log-out-outline')
+              | Logout
+.container
+  .header
+    br 
+    br
+    h1 Drivers near 
+    h1=location
+    if searchdrivers.length===0
+        h1 No Drivers found..... 
+    else
+          div.drivers.vahicles.single-driver
+            each driver in searchdrivers 
+              form(action='/viewdetails' method='post')     
+                div.driver
+                    .image
+                        img(src=`../uploads/${driver.profilePhoto}`,alt='Profile Photo')
+                    .namePrice
+                    h3=driver.name
+                    span Available
+                    p Experience: 
+                    h4=driver.experience 
+                    div.stars-container
+                      each val in [1, 2, 3, 4, 5]
+                        i.fa.fa-star(aria-hidden='true')
+                    div.bay
+                    button#view_details(name='clicked' value=`${driver._id}`) View Details
+script(type='module' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js')
+script(nomodule='' src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js')
+script.
+  $(document).ready(function(){
+  $('.toggle').click(function(){
+  $('.toggle').toggleClass('active')
+  $('.menu').toggleClass('active')
+  })
+  })
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+  }
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+  var dropdowns = document.getElementsByClassName("dropdown-content");
+  var i;
+  for (i = 0; i < dropdowns.length; i++) {
+  var openDropdown = dropdowns[i];
+  if (openDropdown.classList.contains('show')) {
+  openDropdown.classList.remove('show');
+  }
+  }
+  }
+  }
